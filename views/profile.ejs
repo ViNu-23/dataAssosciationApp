@@ -15,9 +15,18 @@
           >Logout</a
         >
       </div>
-      <h3 class="text-3xl mb-5">
-        Hello, <span class="text-yellow-800"><%= user.name %></span>👋
-      </h3>
+
+<div class="flex gap-3">
+
+  <div class="w-10 h-10  rounded-md overflow-hidden">
+    <img class="w-full h-full object-cover" src="/images/uploads/<%=user.profilepic %>" alt="img">
+  </div>
+  <h3 class="text-3xl mb-5">
+    Hello, <span class="text-yellow-800"><%= user.name %></span>👋
+  </h3>
+</div>
+
+     
       <h5 class="mb-5 text-2xl">Create a post</h5>
 
       <form action="/post" method="post">
@@ -44,9 +53,11 @@
               @<%= user.username %>
             </h4>
             <p class="text-sm tracking-tight"><%= post.content %></p>
-            <small class="mt-4 text-[16px] inline-block"><%= post.like.length %> like</small>
+            <small class="mt-4 text-[16px] inline-block"
+              ><%= post.like.length %> like</small
+            >
             <div class="flex gap-4 mt-1">
-              <a class="text-blue-500" href="/like/<%= post._id %>"> 
+              <a class="text-blue-500" href="/like/<%= post._id %>">
                 <%= post.like.indexOf(user._id)?"Like":"UnLike" %>
               </a>
               <a class="text-zinc-600" href="/edit/<%= post._id %>">Edit</a>
